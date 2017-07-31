@@ -28,7 +28,7 @@ fi
 if [ ! -d "$VAL_DATA_ROOT" ]; then
   echo "Error: VAL_DATA_ROOT is not a path to a directory: $VAL_DATA_ROOT"
   echo "Set the VAL_DATA_ROOT variable in create_SNRs_48.sh to the path" \
-       "where the face_48 validation data is stored."
+       "where the SNRs_48 validation data is stored."
   exit 1
 fi
 
@@ -50,7 +50,7 @@ GLOG_logtostderr=1 $TOOLS/convert_imageset \
     --shuffle \
     $VAL_DATA_ROOT \
     $DATA/val.txt \
-    $EXAMPLE/face_val_lmdb
+    $EXAMPLE/SNRs_val_lmdb
 
 echo "Done."
 Status API Training Shop Blog About
