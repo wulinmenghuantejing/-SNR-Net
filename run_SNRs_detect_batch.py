@@ -221,4 +221,4 @@ def face_detection(imgFile):
 if __name__ == "__main__":
     imgFile = '/home/caf/SNR-detect/test.jpg'
 
-    face_detection(imgFile)
+    SNRs_detection(imgFile)
