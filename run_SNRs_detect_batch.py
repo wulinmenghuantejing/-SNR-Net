@@ -130,7 +130,7 @@ def nms_average(boxes, groupThresh=2, overlapThresh=0.2):
     return result_boxes
 
 
-def face_detection(imgFile):
+def SNRs_detection(imgFile):
     net_full_conv = caffe.Net(os.path.join(caffe_root, 'SNRs-detect', 'deploy_full_conv.prototxt'),
                               os.path.join(caffe_root, 'SNRs-detect', '_iter_20000.caffemodel'),
                               caffe.TEST)
