@@ -1,15 +1,13 @@
 #!/usr/bin/env sh
-# Create the face_48 lmdb inputs
-# N.B. set the path to the face_48 train + val data dirs
 
-EXAMPLE=/home/caf/face-detect
-DATA=/home/caf/face-detect
+EXAMPLE=/home/caf/SNRs-detect
+DATA=/home/caf/SNRs-detect
 TOOLS=/home/caf/Downloads/caffe/build/tools
 
-TRAIN_DATA_ROOT=/home/caf/face-detect/train/
-VAL_DATA_ROOT=/home/caf/face-detect/val/
+TRAIN_DATA_ROOT=/home/caf/SNRs-detect/train/
+VAL_DATA_ROOT=/home/caf/SNRs-detect/val/
 
-# Set RESIZE=true to resize the images to 60 x 60. Leave as false if images have
+# Set RESIZE=true to resize the images to 227 x 227. Leave as false if images have
 # already been resized using another tool.
 RESIZE=true
 if $RESIZE; then
@@ -22,14 +20,14 @@ fi
 
 if [ ! -d "$TRAIN_DATA_ROOT" ]; then
   echo "Error: TRAIN_DATA_ROOT is not a path to a directory: $TRAIN_DATA_ROOT"
-  echo "Set the TRAIN_DATA_ROOT variable in create_face_48.sh to the path" \
-       "where the face_48 training data is stored."
+  echo "Set the TRAIN_DATA_ROOT variable in create_SNRs_48.sh to the path" \
+       "where the SNRs_48 training data is stored."
   exit 1
 fi
 
 if [ ! -d "$VAL_DATA_ROOT" ]; then
   echo "Error: VAL_DATA_ROOT is not a path to a directory: $VAL_DATA_ROOT"
-  echo "Set the VAL_DATA_ROOT variable in create_face_48.sh to the path" \
+  echo "Set the VAL_DATA_ROOT variable in create_SNRs_48.sh to the path" \
        "where the face_48 validation data is stored."
   exit 1
 fi
@@ -42,7 +40,7 @@ GLOG_logtostderr=1 $TOOLS/convert_imageset \
     --shuffle \
     $TRAIN_DATA_ROOT \
     $DATA/train.txt \
-    $EXAMPLE/face_train_lmdb
+    $EXAMPLE/SNRs_train_lmdb
 
 echo "Creating val lmdb..."
 
