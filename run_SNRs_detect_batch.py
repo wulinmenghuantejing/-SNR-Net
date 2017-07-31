@@ -131,8 +131,8 @@ def nms_average(boxes, groupThresh=2, overlapThresh=0.2):
 
 
 def face_detection(imgFile):
-    net_full_conv = caffe.Net(os.path.join(caffe_root, 'face-detect', 'deploy_full_conv.prototxt'),
-                              os.path.join(caffe_root, 'face-detect', '_iter_20000.caffemodel'),
+    net_full_conv = caffe.Net(os.path.join(caffe_root, 'SNRs-detect', 'deploy_full_conv.prototxt'),
+                              os.path.join(caffe_root, 'SNRs-detect', '_iter_20000.caffemodel'),
                               caffe.TEST)
     randNum = random.randint(1,10000)
     
@@ -160,11 +160,11 @@ def face_detection(imgFile):
     for scale in scales:
         #resize image
         scale_img = cv2.resize(img,((int(img.shape[0] * scale), int(img.shape[1] * scale))))
-        cv2.imwrite('/home/caf/face-detect/admin01/scale_img.jpg',scale_img)
+        cv2.imwrite('/home/caf/SNRs-detect/admin01/scale_img.jpg',scale_img)
         #scale_img.save("tmp{0}.jpg".format(randNum))
         # load input and configure preprocessing
         #im = caffe.io.load_image("tmp{0}.jpg".format(randNum))
-        im = caffe.io.load_image('/home/caf/face-detect/admin01/scale_img.jpg')
+        im = caffe.io.load_image('/home/caf/SNRS-detect/admin01/scale_img.jpg')
         net_full_conv.blobs['data'].reshape(1,3,scale_img.shape[1],scale_img.shape[0])
         transformer = caffe.io.Transformer({'data': net_full_conv.blobs['data'].data.shape})
         transformer.set_mean('data', np.load(caffe_root2 + 'python/caffe/imagenet/ilsvrc_2012_mean.npy').mean(1).mean(1))
@@ -204,7 +204,7 @@ def face_detection(imgFile):
         win = cv2.namedWindow('test win', flags=0)  
   
         cv2.imshow('test win', img)  
-        cv2.imwrite('/home/caf/face-detect/admin02/result.jpg',img)          
+        cv2.imwrite('/home/caf/SNRs-detect/admin02/result.jpg',img)          
         cv2.waitKey(1)  
 #                 x1 = int(max(1, x1-(x2-x1)/6))
 #                 y1 = int(max(1, y1-(y2-y1)/3))
