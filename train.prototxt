@@ -1,5 +1,5 @@
 #############################  DATA Layer  #############################
-name: "face_train_val"
+name: "SNRs_train_val"
 layer {
   top: "data"
   top: "label"
